@@ -12,6 +12,9 @@ import (
 func main() {
 	config.LoadEnv()
 	port := os.Getenv("API_PORT")
+	if port == "" {
+		port = "8080" // Default port if not set
+	}
 
 	http.HandleFunc("/send-email", handlers.EmailHandler)
 
